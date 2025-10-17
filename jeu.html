@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Jeu</title>
+  <link rel="stylesheet" href="stylejeu.css">
+  <style>
+    #target {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      border-radius: 50%;
+      margin: 20px auto;
+      transition: transform 0.3s;
+    }
+    #burned {
+      display: none;
+      font-size: 20px;
+      color: red;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Exprime ta colère 💢</h2>
+    <p>Voici Sheldonna... Version cartoon. Tu peux la brûler (gentiment)</p>
+    <div id="target">
+  <img src="sheldonna.png" alt="Sheldonna" width="100">
+</div>
+
+<button onclick="burn()">🔥 Brûler Sheldonna</button>
+<p id="burned">OK… elle a compris. 😔</p>
+    <button onclick="location.href='finale.html'">Lire son message</button>
+  </div>
+  <script>
+function burn() {
+  const target = document.getElementById("target");
+  const burnedText = document.getElementById("burned");
+
+  // On change l'image pour montrer qu'elle brûle
+  target.innerHTML = '<img src="sheldonna_brulee.jpeg" alt="Sheldonna brûlée" width="100">';
+
+  // On affiche le message
+  burnedText.style.color = "red";
+  burnedText.textContent = "🔥 Aïe... elle brûle ! OK, elle a compris ! 😭";
+
+  // Petite animation
+  target.style.transition = "transform 0.3s";
+  target.style.transform = "rotate(-5deg) scale(1.1)";
+  
+  // Après 1 seconde, l’image revient à la normale
+  setTimeout(() => {
+    target.style.transform = "rotate(0deg) scale(1)";
+  }, 1000);
+}
+</script>
+  </body>
+  </html>
